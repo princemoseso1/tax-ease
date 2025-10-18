@@ -1,26 +1,38 @@
 // src/pages/TaxAdvice.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+const AccordionItem = ({ title, children }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border rounded-lg mb-4 overflow-hidden shadow-sm">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-5 py-3 bg-green-100 hover:bg-green-200 transition text-left"
+      >
+        <span className="text-lg font-semibold text-green-700">{title}</span>
+        <span className="text-green-600 text-xl">{open ? "−" : "+"}</span>
+      </button>
+      {open && <div className="p-5 text-gray-700 bg-white">{children}</div>}
+    </div>
+  );
+};
 
 const TaxAdvice = () => {
   return (
     <section className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-sm p-8">
-        <h1 className="text-3xl font-bold text-green-700 mb-4">
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow p-8">
+        <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">
           Tax Advice & Compliance
         </h1>
-        <p className="text-gray-700 mb-6">
-          Understanding your tax obligations helps you stay compliant, avoid
-          penalties, and take advantage of incentives and tax holidays provided
-          by Nigerian law.
+        <p className="text-gray-700 mb-8 text-center">
+          Stay informed and compliant with the 2025 Nigerian Tax Act.  
+          Tap on each section below to learn about your obligations, available incentives, and compliance requirements.
         </p>
 
-        {/* Section 1: Personal Tax Advice */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
-            💼 Personal Income Tax (PIT) Compliance
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
+        {/* Accordion 1: Personal Tax */}
+        <AccordionItem title="💼 Personal Income Tax (PIT) Compliance">
+          <ul className="list-disc list-inside space-y-2">
             <li>
               Register your Tax Identification Number (TIN) with your State IRS
               or FIRS if you earn income in multiple states.
@@ -35,18 +47,15 @@ const TaxAdvice = () => {
               remittance by your employer.
             </li>
             <li>
-              For self-employed individuals, declare income honestly and
-              maintain business expense records.
+              For self-employed individuals, declare income honestly and maintain
+              business expense records.
             </li>
           </ul>
-        </div>
+        </AccordionItem>
 
-        {/* Section 2: Company Tax Advice */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
-            🏢 Company Income Tax (CIT) Compliance
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
+        {/* Accordion 2: Company Tax */}
+        <AccordionItem title="🏢 Company Income Tax (CIT) Compliance">
+          <ul className="list-disc list-inside space-y-2">
             <li>Register for a company TIN immediately after CAC incorporation.</li>
             <li>
               File annual CIT returns within <b>6 months</b> of your company’s
@@ -57,22 +66,19 @@ const TaxAdvice = () => {
               Nigerian accounting standards.
             </li>
             <li>
-              Ensure withholding tax (WHT) and Value Added Tax (VAT) are
-              correctly deducted and remitted.
+              Ensure withholding tax (WHT) and Value Added Tax (VAT) are correctly
+              deducted and remitted.
             </li>
             <li>
               Small companies (turnover under ₦25m) are exempt from CIT but must
               still file returns.
             </li>
           </ul>
-        </div>
+        </AccordionItem>
 
-        {/* Section 3: Tax Holidays & Incentives */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
-            🌴 Tax Holidays & Incentives
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
+        {/* Accordion 3: Tax Holidays */}
+        <AccordionItem title="🌴 Tax Holidays & Incentives">
+          <ul className="list-disc list-inside space-y-2">
             <li>
               <b>Pioneer Status Incentive (PSI):</b> Grants 3–5 years tax
               holiday to qualifying industries under the Industrial Development
@@ -83,8 +89,8 @@ const TaxAdvice = () => {
               Nigerian goods.
             </li>
             <li>
-              <b>Research & Development (R&D):</b> Deductions for qualifying
-              R&D expenses.
+              <b>Research & Development (R&D):</b> Deductions for qualifying R&D
+              expenses.
             </li>
             <li>
               <b>Public Infrastructure Investment:</b> Tax credits for companies
@@ -95,14 +101,11 @@ const TaxAdvice = () => {
               exempt CIT for farming and agro-allied businesses.
             </li>
           </ul>
-        </div>
+        </AccordionItem>
 
-        {/* Section 4: Quick FAQs */}
-        <div>
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
-            ❓ Quick FAQs
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
+        {/* Accordion 4: FAQs */}
+        <AccordionItem title="❓ Quick FAQs">
+          <ul className="list-disc list-inside space-y-2">
             <li>
               Can I pay tax for my company online? — Yes, via{" "}
               <a
@@ -112,8 +115,7 @@ const TaxAdvice = () => {
                 className="text-green-700 underline"
               >
                 FIRS TaxPro Max
-              </a>
-              .
+              </a>.
             </li>
             <li>
               Do freelancers pay tax? — Yes, under Personal Income Tax based on
@@ -128,7 +130,7 @@ const TaxAdvice = () => {
               and interest on unpaid taxes.
             </li>
           </ul>
-        </div>
+        </AccordionItem>
 
         <div className="mt-10 text-center">
           <Link
