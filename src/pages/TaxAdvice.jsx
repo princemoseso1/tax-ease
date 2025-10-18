@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Reusable Accordion Component
 const AccordionItem = ({ title, children }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -18,7 +19,72 @@ const AccordionItem = ({ title, children }) => {
   );
 };
 
+// Predefined keyword-based tax advice (offline "AI")
+const taxAnswers = [
+  {
+    keywords: ["pioneer", "holiday", "incentive"],
+    answer:
+      "Under the Pioneer Status Incentive (PSI), qualifying industries can enjoy a 3–5 year tax holiday. Apply through the Nigerian Investment Promotion Commission (NIPC) for approval.",
+  },
+  {
+    keywords: ["small", "company", "turnover"],
+    answer:
+      "Small companies with annual turnover below ₦25 million are exempt from Company Income Tax (CIT), but must still file annual returns for compliance.",
+  },
+  {
+    keywords: ["freelancer", "self-employed", "contract"],
+    answer:
+      "Freelancers and self-employed individuals are taxed under Personal Income Tax. Declare your income honestly and deduct allowable expenses such as pension and insurance.",
+  },
+  {
+    keywords: ["filing", "deadline", "penalty", "late"],
+    answer:
+      "For individuals, PIT returns are due by 31st March. For companies, CIT returns are due within 6 months of the financial year end. Late filing attracts penalties and interest.",
+  },
+  {
+    keywords: ["deduction", "allowable", "expenses"],
+    answer:
+      "Allowable deductions include pension, NHF, R&D expenses, and business expenses wholly incurred for earning income. Non-deductible items include rent, fines, VAT, and personal loans.",
+  },
+  {
+    keywords: ["effective", "tax", "rate", "etr"],
+    answer:
+      "Companies subject to the Effective Tax Rate rule must ensure their total taxes equal at least 15% of profits (after adjustments). A top-up applies if below that threshold.",
+  },
+  {
+    keywords: ["development levy", "4%", "assessment"],
+    answer:
+      "A Development Levy of 4% applies to assessable profits, except for small companies and non-resident entities.",
+  },
+  {
+    keywords: ["agriculture", "farm", "rural"],
+    answer:
+      "Agricultural and rural development businesses enjoy reduced or exempt CIT rates as part of government incentives to boost food production.",
+  },
+];
+
 const TaxAdvice = () => {
+  const [question, setQuestion] = useState("");
+  const [response, setResponse] = useState("");
+
+  // Simple keyword matching function
+  const handleAsk = () => {
+    const query = question.toLowerCase();
+    const found = taxAnswers.find((item) =>
+      item.keywords.some((k) => query.includes(k))
+    );
+
+    if (found) {
+      setResponse(found.answer);
+    } else if (query.trim() === "") {
+      setResponse("Please enter a tax-related question.");
+    } else {
+      setResponse(
+        "Sorry, I couldn’t find a direct answer. Please contact FIRS or your State IRS for professional tax guidance."
+      );
+    }
+  };
+
   return (
     <section className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 py-12 px-6">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow p-8">
@@ -26,8 +92,9 @@ const TaxAdvice = () => {
           Tax Advice & Compliance
         </h1>
         <p className="text-gray-700 mb-8 text-center">
-          Stay informed and compliant with the 2025 Nigerian Tax Act.  
-          Tap on each section below to learn about your obligations, available incentives, and compliance requirements.
+          Stay informed and compliant with the 2025 Nigerian Tax Act.
+          Tap on each section below to learn about your obligations,
+          available incentives, and compliance requirements.
         </p>
 
         {/* Accordion 1: Personal Tax */}
@@ -66,8 +133,8 @@ const TaxAdvice = () => {
               Nigerian accounting standards.
             </li>
             <li>
-              Ensure withholding tax (WHT) and Value Added Tax (VAT) are correctly
-              deducted and remitted.
+              Ensure withholding tax (WHT) and VAT are correctly deducted and
+              remitted.
             </li>
             <li>
               Small companies (turnover under ₦25m) are exempt from CIT but must
@@ -80,25 +147,22 @@ const TaxAdvice = () => {
         <AccordionItem title="🌴 Tax Holidays & Incentives">
           <ul className="list-disc list-inside space-y-2">
             <li>
-              <b>Pioneer Status Incentive (PSI):</b> Grants 3–5 years tax
-              holiday to qualifying industries under the Industrial Development
-              (Income Tax Relief) Act.
+              <b>Pioneer Status Incentive (PSI):</b> Grants 3–5 years tax holiday
+              to qualifying industries under the Industrial Development (Income
+              Tax Relief) Act.
             </li>
             <li>
-              <b>Export Expansion Grant (EEG):</b> Encourages exporters of
-              Nigerian goods.
+              <b>Export Expansion Grant (EEG):</b> Encourages exporters of Nigerian goods.
             </li>
             <li>
-              <b>Research & Development (R&D):</b> Deductions for qualifying R&D
-              expenses.
+              <b>Research & Development (R&D):</b> Deductions for qualifying R&D expenses.
             </li>
             <li>
               <b>Public Infrastructure Investment:</b> Tax credits for companies
               investing in roads and infrastructure.
             </li>
             <li>
-              <b>Agricultural & Rural Development Incentives:</b> Reduced or
-              exempt CIT for farming and agro-allied businesses.
+              <b>Agricultural & Rural Development Incentives:</b> Reduced or exempt CIT for farming and agro-allied businesses.
             </li>
           </ul>
         </AccordionItem>
@@ -118,8 +182,7 @@ const TaxAdvice = () => {
               </a>.
             </li>
             <li>
-              Do freelancers pay tax? — Yes, under Personal Income Tax based on
-              net income after reliefs.
+              Do freelancers pay tax? — Yes, under Personal Income Tax based on net income after reliefs.
             </li>
             <li>
               Can I claim rent or personal loans as deductions? — No, domestic or
@@ -131,6 +194,37 @@ const TaxAdvice = () => {
             </li>
           </ul>
         </AccordionItem>
+
+        {/* Ask TaxEase AI Section */}
+        <div className="mt-12 border-t pt-8">
+          <h2 className="text-2xl font-semibold text-green-700 mb-4 text-center">
+            🤖 Ask TaxEase AI
+          </h2>
+          <p className="text-gray-700 mb-4 text-center">
+            Ask me any question about tax rules, deductions, incentives, or compliance under the 2025 Nigerian Tax Act.
+          </p>
+          <div className="flex flex-col md:flex-row gap-3 justify-center">
+            <input
+              type="text"
+              placeholder="e.g. How do I qualify for a tax holiday?"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              className="border px-4 py-2 rounded-lg flex-grow focus:outline-green-500"
+            />
+            <button
+              onClick={handleAsk}
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+            >
+              Ask
+            </button>
+          </div>
+
+          {response && (
+            <div className="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-gray-800">
+              <p className="font-medium">💬 {response}</p>
+            </div>
+          )}
+        </div>
 
         <div className="mt-10 text-center">
           <Link
