@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# 🧮 TaxEase – Nigeria Tax Calculator (2025)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**TaxEase** is a simple and reliable web app that helps individuals and companies in Nigeria calculate their **Personal Income Tax (PIT)** and **Company Income Tax (CIT)** using the latest **Nigeria Tax Act (2025)**.
 
-## Available Scripts
+It is designed to make tax understanding and compliance easy for everyone — salary earners, business owners, and companies.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 What You Can Do with TaxEase
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Calculate **Personal Income Tax (PIT)** using official 2025 tax brackets  
+- Calculate **Company Income Tax (CIT)** for small and large companies  
+- Automatically apply **Development Levy** and **Effective Tax Rate (ETR)** rules  
+- Generate and **download a professional PDF report** of your results  
+- Enjoy a clean, mobile-friendly design built for Nigerians  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ⚙️ How to Use
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Enter your **annual income** or **company profit**  
+2. Tick any relevant options (e.g. small company, non-resident)  
+3. Click **Calculate Tax**  
+4. View your result or download the full **TaxEase Report (PDF)**  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧰 Tools Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React.js** – App structure  
+- **Tailwind CSS** – Styling and responsiveness  
+- **jsPDF** – PDF generation  
+- **React Router** – Page navigation  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚖️ Important Note
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+TaxEase follows the **Nigeria Tax Act (2025)** for all tax rules, rates, and exemptions.  
+However, results are for **information and education** only.  
+For official advice or filing, please contact the **Federal Inland Revenue Service (FIRS)** or a licensed tax consultant.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Status
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+TaxEase is currently in development and will continue to grow with new features such as:
+- A tax education section  
+- Simple explanations for tax terms  
+- User dashboard for saved reports  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 👨🏽‍💻 Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Moses Ogbeche**  
+Frontend Developer • Project Lead  
+GitHub: [@princemoseso1](https://github.com/princemoseso1)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔒 Copyright
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+© 2025 **TaxEase**. All rights reserved.  
+This project is proprietary and may not be copied, modified, or distributed without permission.
